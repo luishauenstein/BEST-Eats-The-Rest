@@ -76,10 +76,25 @@
         margin-top: 40%;
         font-size: 6vw;
       }
-      .menuScore {
+      .menuText {
         text-align: center;
         width: 100%;
         display: none;
+      }
+      .nameText, nameText:focus {
+        text-align: center;
+        width: 80%;
+        border:none;
+        outline:none;
+        font-family: 'Press Start 2P', monospace;
+      }
+      #enterYourName {
+        margin-top: 36.5%;
+        font-size: 2vw;
+      }
+      #nameInput {
+        margin-top: 40%;
+        font-size: 2.5vw;
       }
       #inGameScore {
         position: absolute;
@@ -102,8 +117,12 @@
           src="sprites/play.png"
           onClick="playButtonClick()"
         />
-        <div class="absolute-center menuScore" id="yourScore">Your Score:</div>
-        <div class="absolute-center menuScore" id="scoreNum">0</div>
+        <!--Your Score - only displayed after first game-->
+        <div class="absolute-center menuText" id="yourScore">Your Score, <span id="nameSpan"></span>:</div>
+        <div class="absolute-center menuText" id="scoreNum">0</div>
+        <!--Your Name - only displayed before first game-->
+        <div class="absolute-center nameText" id="enterYourName">Enter Your Name:</div>
+        <input type="text" class="absolute-center nameText" id="nameInput" maxlength="40"></input>
       </div>
       <div id="inGameScore">0</div>
       <canvas id="game"></canvas>

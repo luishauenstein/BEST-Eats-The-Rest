@@ -92,20 +92,46 @@ const resetGame = () => {
 let scene = 0;
 
 // main menu (scene 0)
+let username;
+
+//select input
+let nameInput = document.getElementById('nameInput');
+nameInput.focus();
+nameInput.select();
+
+//click play button
 const mainmenu = document.getElementById('mainmenu');
 const scoreCounter = document.getElementById('inGameScore');
 const menuScoreCounter = document.getElementById('scoreNum');
 const playButtonClick = () => {
+  //undisplay main menu and score counter in menu
   mainmenu.style.display = 'none';
   menuScoreCounter.style.display = 'none';
   score = 0;
   scene = 1;
+  time = Date.now();
+  //save username if it's first time, removes input then
+  if (nameInput) {
+    username = nameInput.value;
+    if (username != '') {
+      document.getElementById('nameSpan').innerHTML = username;
+    } else {
+      document.getElementById('nameSpan').innerHTML = 'Nameless Champ <3';
+    }
+    nameInput.remove();
+    nameInput = null;
+    document.getElementById('enterYourName').remove();
+  }
+
+  //reset score counter
   scoreCounter.innerHTML = '0';
   scoreCounter.style.display = 'block';
+  //reset game
   resetGame();
   drawFrame();
 };
 
+//game over handler
 const gameOver = () => {
   scene = 0;
   document.getElementById('inGameScore').style.display = 'none';
@@ -113,10 +139,27 @@ const gameOver = () => {
   document.getElementById('yourScore').style.display = 'block';
   menuScoreCounter.innerHTML = score;
   menuScoreCounter.style.display = 'block';
+
+  //get time games has laster in seconds
+  time = Math.round((Date.now() - time) / 1000);
+
+  //post score to leaderboard
+  const data =  JSON.stringify({
+    passwordPost: "C2p%z1e3",
+    namePost: username,
+    scorePost: score,
+    timePost: time,
+  })
+  console.log(data);
+  fetch('./leaderboard/post_score.php', {
+    method: 'POST',
+    body: data,
+  })
 };
 
 // game loop (scene 1)
 let score = 0;
+let time;
 let then = 0;
 let now;
 const gameLoop = () => {
@@ -130,7 +173,7 @@ const gameLoop = () => {
     // add head in correct position
     const oldX = snake[snake.length - 1].x; //x of old head
     const oldY = snake[snake.length - 1].y; //y of old head
-    let newHead, deg;
+    let newHead;
     pastDirection = upcomingDirection; //lock in direction
     const headImgSrc = './snakeTiles/snakeHead' + pastDirection + '.png';
     switch (pastDirection) {
