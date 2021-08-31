@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts Pixelart Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+    rel="stylesheet"
+  />
+  <title>Leaderboard | BEST Eats The Rest</title>
+  <style>
+    body {
+      /*margin: 0;*/
+      font-family: 'Press Start 2P', monospace;
+      line-height: 1;
+
+      image-rendering: optimizeSpeed; /* Legal fallback */
+      image-rendering: -moz-crisp-edges; /* Firefox */
+      image-rendering: -o-crisp-edges; /* Opera */
+      image-rendering: -webkit-optimize-contrast; /* Safari */
+      image-rendering: optimize-contrast; /* CSS3 Proposed  */
+      image-rendering: crisp-edges; /* CSS4 Proposed  */
+      image-rendering: pixelated; /* CSS4 Proposed  */
+      -ms-interpolation-mode: nearest-neighbor; /* IE8+ */
+    }
+    header {
+      display:flex;
+      flex-wrap: wrap;
+      margin-bottom: 1.5em;
+    }
+    img {
+      min-width:350px;
+    }
+    img:hover {
+      opacity: 0.8;
+    }
+    #headline{
+      font-size:2em;
+      display: flex;
+      align-items: center;
+      padding-left:0.75em;
+    }
+
+    /* table css */
+    table {
+      width:100%;
+      font-size: 1.5em;
+      border-collapse: collapse;
+    }
+    th{
+      text-align: start;
+    }
+    tr{
+      line-height:1.2em;
+      border-bottom: 1em solid transparent
+    }
+
+    @media only screen and (max-width: 742px) {
+      #headline {
+        padding-left: 0.375em;
+        padding-right: 0.375em;
+        text-align: center;
+        margin-top:0.5em;
+      }
+      header {
+        justify-content: center;
+      }
+      td {
+        display: block;
+      }
+      th {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html"><img src="../sprites/mainmenu.png"/></a>
+    <div id="headline">Leaderboard</div>
+  </header>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Rank</th>
+          <th scope="col">Name</th>
+          <th scope="col">Score</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- table entries go here -->
+      </tbody>
+    </table>
+  </section>
+  <script src="leaderboard.js"></script>
+</body>
+</html>

@@ -117,6 +117,7 @@ const playButtonClick = () => {
       document.getElementById('nameSpan').innerHTML = username;
     } else {
       document.getElementById('nameSpan').innerHTML = 'Nameless Champ <3';
+      username = "A Nameless Player";
     }
     nameInput.remove();
     nameInput = null;

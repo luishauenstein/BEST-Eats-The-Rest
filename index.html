@@ -59,22 +59,29 @@
       }
       #betr {
         width: 40%;
-        margin-top: 5%;
+        margin-top: 4%;
       }
       #playbutton {
         width: 20%;
-        margin-top: 25%;
+        margin-top: 22%;
       }
       #playbutton:hover {
         opacity: 0.8;
       }
+      #leaderboardbutton {
+        width:25%;
+        margin-top: 31.5%;
+      }
+      #leaderboardbutton:hover {
+        opacity: 0.8;
+      }
       #yourScore {
-        margin-top: 36.5%;
+        margin-top: 40%;
         font-size: 2vw;
       }
       #scoreNum {
-        margin-top: 40%;
-        font-size: 6vw;
+        margin-top: 43%;
+        font-size: 5vw;
       }
       .menuText {
         text-align: center;
@@ -89,11 +96,11 @@
         font-family: 'Press Start 2P', monospace;
       }
       #enterYourName {
-        margin-top: 36.5%;
+        margin-top: 40%;
         font-size: 2vw;
       }
       #nameInput {
-        margin-top: 40%;
+        margin-top: 43%;
         font-size: 2.5vw;
       }
       #inGameScore {
@@ -117,12 +124,19 @@
           src="sprites/play.png"
           onClick="playButtonClick()"
         />
-        <!--Your Score - only displayed after first game-->
+        <a href="./leaderboard/index.html"><input
+          class="absolute-center"
+          id="leaderboardbutton"
+          type="image"
+          src="sprites/leaderboardbutton.png"
+          onClick="leaderboardButtonClick()"
+        /></a>
+        <!-- Your Score - only displayed after first game -->
         <div class="absolute-center menuText" id="yourScore">Your Score, <span id="nameSpan"></span>:</div>
         <div class="absolute-center menuText" id="scoreNum">0</div>
-        <!--Your Name - only displayed before first game-->
+        <!-- Your Name - only displayed before first game -->
         <div class="absolute-center nameText" id="enterYourName">Enter Your Name:</div>
-        <input type="text" class="absolute-center nameText" id="nameInput" maxlength="40"></input>
+        <input type="text" class="absolute-center nameText" id="nameInput" maxlength="30" autocomplete="off"></input>
       </div>
       <div id="inGameScore">0</div>
       <canvas id="game"></canvas>
